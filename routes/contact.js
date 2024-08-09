@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const Contact = require("../models/contact");
 
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "Express" });
+});
 // Route pour soumettre le formulaire
 router.post("/", async (req, res) => {
   try {
