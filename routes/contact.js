@@ -8,11 +8,13 @@ router.get("/", function (req, res, next) {
 // Route pour soumettre le formulaire
 router.post("/", async (req, res) => {
   try {
+    console.log("Début de la route POST /contact");
     const { name, phone, message } = req.body;
     const newContact = new Contact({ name, phone, message });
     await newContact.save();
-    res.status(200).json({ result: true, newContact });
     console.log("Nouvelle demande de contact:", newContact);
+    res.status(200).json({ result: true, newContact });
+    console.log("Fin de la route POST /contact");
   } catch (error) {
     res.status(500).json({ error: "Erreur lors de l'envoi du message" });
   }
